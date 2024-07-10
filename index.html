@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greet Function with AlpineJS</title>
+    <script src="https://unpkg.com/alpinejs@3.2.2/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" x-data="greetApp()">
+        <h1>Greeting</h1>
+        <div class="input-group">
+            <input type="text" placeholder="Enter your name" x-model="name">
+            <button @click="sayHello()">Greet</button>
+            <button @click="reset">Reset</button>
+        </div>
+        <div class="message" x-text="message"></div>
+    </div>
+
+
+    <div class="container" x-data="transportFeeApp()">
+        <h1>Transport Fee Calculator</h1>
+        
+        <div class="input-group">
+            <input type="text" id="shift" x-model="shift" placeholder="Enter shift (morning, afternoon, nightshift)">
+            <button @click="calculateFee">Calculate Fee</button>
+            <button @click="reset">Reset</button>
+        </div>
+        
+        <div class="message" x-show="fee !== ''">
+            <p>Transport fee for {{ shift }}: <span x-text="fee"></span></p>
+        </div>
+    </div>
+
+
+    <div class="container" x-data="airtimeCalculator()">
+        <h1>Airtime Calculator</h1>
+        
+        <div class="input-group">
+            <input type="text" id="usage" x-model="usage" placeholder="Enter usage (e.g., call,sms,data)">
+            <input type="number" id="remaining_amount" x-model="remainingAmount" placeholder="Enter remaining amount">
+            <button @click="calculateAirtime">Calculate</button>
+            <button @click="reset">Reset</button>
+        </div>
+        
+        <div class="message" x-show="result !== ''">
+            <p>Remaining airtime: <span x-text="result"></span></p>
+        </div>
+    </div>
+
+
+    <div class="container" x-data="wordAnalysisApp()">
+        <h1>Word Analysis</h1>
+        
+        <div class="input-group">
+            <input type="text" id="sentence" x-model="sentence" placeholder="Enter a sentence">
+            <button @click="analyzeWords">Analyze</button>
+            <button @click="reset">Reset</button>
+        </div>
+        
+        <div class="message" x-show="results.longest !== ''">
+            <p>Longest word: <span x-text="results.longest"></span></p>
+            <p>Shortest word: <span x-text="results.shortest"></span></p>
+            <p>Total word length: <span x-text="results.totalLength"></span></p>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
