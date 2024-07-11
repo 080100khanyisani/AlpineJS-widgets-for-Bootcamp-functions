@@ -1,17 +1,26 @@
-function greetApp() {
+function greetingApp() {
     return {
         name: '',
+        language: 'English',
         message: '',
-        greet(name) {
-            return "Hello, " + name;
-        },
-        sayHello() {
-            this.message = this.greet(this.name);
-            this.name = ''; // Reset the input field
+        greet() {
+            if (/[^a-zA-Z]/.test(this.name)) {
+                this.message = 'Error: Name must contain only letters';
+                return;
+            }
+
+            const greetings = {
+                'English': 'Hello',
+                'Spanish': 'Hola',
+                'French': 'Bonjour'
+            };
+
+            this.message = `${greetings[this.language]}, ${this.name}`;
         },
         reset() {
-            this.message = '';
             this.name = '';
+            this.language = 'English';
+            this.message = '';
         }
     };
 };

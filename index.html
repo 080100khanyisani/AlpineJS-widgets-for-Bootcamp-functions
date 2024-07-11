@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" x-data="greetApp()">
-        <h1>Greeting</h1>
+    <div class="container" x-data="greetingApp()">
         <div class="input-group">
             <input type="text" placeholder="Enter your name" x-model="name">
-            <button @click="sayHello()">Greet</button>
-            <button @click="reset">Reset</button>
+        </div>
+        <div class="input-group">
+            <select x-model="language">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <button @click="greet()">Greet</button>
         </div>
         <div class="message" x-text="message"></div>
+        <div class="input-group">
+            <button @click="reset()">Reset</button>
+        </div>
     </div>
 
 
